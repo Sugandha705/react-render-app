@@ -9,7 +9,7 @@ import path from "path";
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors({ origin: process.env.FRONTEND_URL }));
+app.use(cors());
 app.use(express.json());
 
 console.log(path.join(import.meta.dirname, "/dist"));
