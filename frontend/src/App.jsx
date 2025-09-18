@@ -8,7 +8,7 @@ function App() {
   const [form, setForm] = useState({ name: "", message: "" });
 
   async function loadMessages() {
-    const res = await fetch(`${API_URL}/messages`);
+    const res = await fetch(`${API_URL}`);
     const data = await res.json();
     setMessages(data);
   }
@@ -20,7 +20,7 @@ function App() {
   async function handleSubmit(e) {
     e.preventDefault();
     if (!form.name || !form.message) return;
-    await fetch(`${API_URL}/messages`, {
+    await fetch(`${API_URL}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -30,7 +30,7 @@ function App() {
   }
 
   async function handleDelete(id) {
-    await fetch(`${API_URL}/messages/${id}`, { method: "DELETE" });
+    await fetch(`${API_URL}/${id}`, { method: "DELETE" });
     loadMessages();
   }
 
